@@ -25,23 +25,35 @@ class Cell
 		world.cells.each do |cell|
 			#cell to the north
 			if self.x == cell.x && self.y == cell.y - 1 #check one cell lower
-				neighbors << cell
+				@neighbors << cell
 			end
 			#cell to northeast
 			if self.x == cell.x - 1 && self.y == cell.y - 1
-				neighbors << cell
+				@neighbors << cell
 			end
 			#cell to the east
 			if self.x == cell.x - 1 && self.y == cell.y
-				neighbors << cell
+				@neighbors << cell
 			end
 			#cell to the southeast
-			# if self.x == cell.x - 1 && self.y == cell.y - 1
-			# 	neighbors << cell
-			# end
+			if self.x == cell.x - 1 && self.y == cell.y + 1
+			 	@neighbors << cell
+			end
+			#cell to the south
+			if self.x == cell.x && self.y == cell.y + 1
+			 	@neighbors << cell
+			end 
+			#cell to southwest
+			if self.x == cell.x + 1 && self.y == cell.y + 1
+			 	@neighbors << cell
+			end 
 			#cell to the west
 			if self.x == cell.x + 1 && self.y == cell.y
-				neighbors << cell
+				@neighbors << cell
+			end
+			#cell to the northwest
+			if self.x == cell.x + 1 && self.y == cell.y - 1
+				@neighbors << cell
 			end
 			
 		end
