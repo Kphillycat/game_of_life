@@ -6,8 +6,8 @@ class World
 	attr_accessor :cells, :board
 
 	def initialize	
-		@rows = 10
-		@columns = 10
+		@rows = 25
+		@columns = 25
 		@cells = [] 
 		build_board
 	end
