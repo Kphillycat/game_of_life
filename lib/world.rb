@@ -1,5 +1,6 @@
 require_relative './cell'
 require 'debugger'
+require 'rainbow'
 
 class World
 	#keeps track of new cells
@@ -26,7 +27,7 @@ class World
 	def display
 		@board.each do |row|
 			row.each do |value|
-				print value.alive? ? " * " : " . "
+				print value.alive? ? " * ".color(:red) : " . ".color(:blue)
 			end
 			puts
 		end

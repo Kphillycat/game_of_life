@@ -32,7 +32,6 @@ def beacon
 end
 
 def pulsar
-	#move by 7
 	DA_WORLD.board[11][10].alive = true
 	DA_WORLD.board[10][11].alive = true
 	DA_WORLD.board[10][12].alive = true
@@ -46,17 +45,25 @@ def pulsar
 	DA_WORLD.board[11][16].alive = true
 end
 
-def run
-	10.times do |x|
+def random_formation
+	pulsar
+	beacon
+	rand(1..300).times do
+		DA_WORLD.board[rand(1..20)][rand(1..20)].alive = true
+	end
+end
+
+def run(worlds=20)
+	worlds.times do |x|
 		puts "World #{x+1}"
 		DA_WORLD.display
 		DA_WORLD.tick!
-		sleep(0.5)
+		#sleep(0.05)
 	end
 end
 
 puts "Welcome to the game of life where you control the world."
-puts "Which formation would you like to see? 1 - blinker, 2 - toad, 3 - beacon, 4 - pulsar"
+puts "Which formation would you like to see? 1 - blinker, 2 - toad, 3 - beacon, 4 - pulsar, r - random"
 user_input = gets.chomp
 
 #Set up board based on formation user wants to see
@@ -68,10 +75,13 @@ elsif user_input == "3"
 	beacon
 elsif user_input == "4"
 	pulsar
+elsif user_input == "r"
+	random_formation
 else
 	puts "Wrong input. Can not compute!"
 end
 #run the program
+
 run
 
 	
