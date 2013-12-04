@@ -9,6 +9,7 @@ class Cell
 		@x = x
 		@y = y
 		world.cells << self
+
 	end
 
 	def die!

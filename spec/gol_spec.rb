@@ -95,12 +95,11 @@ describe "Game of life" do
 	end
 
 	it "Rule 4: Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction." do
-		test_cell = Cell.new(world)
-		first_neighbor = test_cell.spawn_at(5,4)
-		second_neighbor = test_cell.spawn_at(6,4)
-		third_neighbor = test_cell.spawn_at(6,5)
+		test_cell = Cell.new(world).spawn_at(5,5)
+		first_neighbor = test_cell.spawn_at(4,5)
+		second_neighbor = test_cell.spawn_at(6,5)		
 		test_cell.die!
 		world.tick!
-		expect(test_cell).to be_alive
+		expect(world.board[5][6]).to be_alive
 	end
 end

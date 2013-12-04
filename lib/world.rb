@@ -35,19 +35,25 @@ class World
 
 
 	def tick! #cells should be processed through rules
+		die_array = [] #cells marked for DEATH!!
+		alive_array = [] #cells marked to come alive
 		cells.each do |cell|
 			if cell.neighbors.count < 2 #Rule 1. 
-				cell.die!
+				die_array << cell
 			end
 			
 			if cell.neighbors.count > 3 #Rule 3
-				cell.die!
+				die_array << cell
 			end
 
 			if cell.dead? && cell.neighbors.count == 3 #Rule 4
-				cell.born!
+				alive_array << cell
 			end
 		end
+		
+		die_array.each {|cell| cell.die!}
+		alive_array.each {|cell| cell.born!}
+
 	end
 
 end
